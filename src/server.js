@@ -9,11 +9,11 @@ const passport = require('passport');
 
 // Initializations
 const app = express();
-require('./src/config/passport');
+require('./config/passport');
 
 // Settings
 app.set('port', process.env.PORT || 4000);
-app.set('views', path.join( __dirname, 'src/views'));
+app.set('views', path.join( __dirname, 'views'));
 app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
     layoutsDir:path.join(app.get('views'), 'layouts'),
@@ -45,9 +45,9 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use(require('./src/routes/index.routes'));
-app.use(require('./src/routes/notes.routes'));
-app.use(require('./src/routes/users.routes'));
+app.use(require('./routes/index.routes'));
+app.use(require('./routes/notes.routes'));
+app.use(require('./routes/users.routes'));
 
 // Static files
 app.use(express.static(path.join( __dirname, 'public')))
